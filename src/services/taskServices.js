@@ -1,4 +1,4 @@
-const Tasks = require('../../database/models/index').Tasks
+const { Tasks } = require('../../database/models')
 
 const getAllTasks = async () => {
   return await Tasks.findAll()

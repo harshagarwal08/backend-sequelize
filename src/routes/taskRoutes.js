@@ -1,4 +1,5 @@
 const taskControllers = require('../controllers/taskControllers')
+const { validateBody } = require('../../middlewares/Validator')
 
 const Router = require('express').Router
 
@@ -11,10 +12,10 @@ taskRouter.get('/', taskControllers.getAllTasks)
 taskRouter.get('/:id', taskControllers.getTask)
 
 // POST /tasks
-taskRouter.post('/', taskControllers.postTask)
+taskRouter.post('/', validateBody, taskControllers.postTask)
 
 // PUT /tasks/1
-taskRouter.put('/:id', taskControllers.editTask)
+taskRouter.put('/:id', validateBody, taskControllers.editTask)
 
 // PATCH /tasks/1
 taskRouter.patch('/:id', taskControllers.completeTask)
